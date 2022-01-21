@@ -1,0 +1,5 @@
+A tábla, ahogy ki fog nézni:
+- id
+- feladatot beadó diák neve
+- feladat neve
+- feladat megoldására mutató URL
