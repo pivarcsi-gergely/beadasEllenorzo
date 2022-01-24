@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\DB;
+use Illuminate\Support\Facades\DB;
 
 class HaziController extends Controller
 {
@@ -14,7 +14,13 @@ class HaziController extends Controller
      */
     public function index()
     {
-        $studentCount = DB::table('hazis')->where('diak_nev', )->count();
+        $studentCount = DB::table('hazis')->distinct()->count();
+        $finishedCount = DB::table('hazis')->whereRaw('feladat <> ""')->whereNotNull('feladat')->count(); //->orWhere('url', '<>', "''")->count();
+
+        return view('index', [
+            'studentCount' => $studentCount,
+            'finishedCount' => $finishedCount
+        ]);
     }
 
     /**
