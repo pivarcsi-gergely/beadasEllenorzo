@@ -11,6 +11,7 @@
 <body>
     <h1>Welcome to our page of Házi feladatok!</h1>
     <p>Currently, there are a total number of {{ $studentCount }} students, and {{ $finishedCount }}/{{ $studentCount }} has finished their homework.</p>
+    <a href="{{ route('homework.index') }}">Go to listing</a>
 </body>
 
 </html>

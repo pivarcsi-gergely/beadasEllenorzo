@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\IndexController;
 use App\Http\Controllers\HaziController;
 
 /*
@@ -14,4 +15,5 @@ use App\Http\Controllers\HaziController;
 |
 */
 
-Route::get('/', [HaziController::class, 'index']);
+Route::get('/', [IndexController::class, 'index'])->name('home');
+Route::resource('homework', HaziController::class);

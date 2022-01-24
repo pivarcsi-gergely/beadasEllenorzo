@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Hazi;
 use Illuminate\Support\Facades\DB;
 
 class HaziController extends Controller
@@ -14,13 +15,8 @@ class HaziController extends Controller
      */
     public function index()
     {
-        $studentCount = DB::table('hazis')->distinct()->count();
-        $finishedCount = DB::table('hazis')->whereRaw('feladat <> ""')->whereNotNull('feladat')->count(); //->orWhere('url', '<>', "''")->count();
-
-        return view('index', [
-            'studentCount' => $studentCount,
-            'finishedCount' => $finishedCount
-        ]);
+        $hazik = Hazi::orderBy('diak_nev')->get();
+        return view('homework.index', ['hazik' => $hazik]);
     }
 
     /**
@@ -42,7 +38,6 @@ class HaziController extends Controller
      */
     public function show($id)
     {
-        //
     }
 
     /**
