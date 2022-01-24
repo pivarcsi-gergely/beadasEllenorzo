@@ -27,7 +27,6 @@ class HaziController extends Controller
      */
     public function store(Request $request)
     {
-        //
     }
 
     /**
@@ -36,8 +35,9 @@ class HaziController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Hazi $homework)
     {
+        return view('homework.show', ['homework' => $homework]);
     }
 
     /**

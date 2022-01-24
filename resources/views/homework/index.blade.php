@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <h1>...of all records</h1>
+    <h1>...of all the records</h1>
     <p>
         <a href="{{ route('home') }}">Link back to the main page</a>
     </p>
@@ -26,9 +26,9 @@
         <tbody>
             @foreach($hazik as $hazi)
             <tr>
-                <td>{{ $hazi->diak_nev }}</td>
+                <td><a href="{{ route('homework.show', ['homework' => $hazi->id]) }}">{{ $hazi->diak_nev }}</a></td>
                 <td>{{ $hazi->feladat }}</td>
-                <td>{{ $hazi->url }}</td>
+                <td><a href="{{ $hazi->url }}" target="_blank">{{ $hazi->url }}</a></td>
                 <td>{{ $hazi->updated_at }}</td>
             </tr>
             @endforeach
