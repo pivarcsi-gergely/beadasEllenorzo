@@ -11,7 +11,8 @@
 <body>
     <h1>...of all the records</h1>
     <p>
-        <a href="{{ route('home') }}">Link back to the main page</a>
+        <a href="{{ route('home') }}">Link back to the main page</a><br>
+        <a href="{{ route('homework.create')}}">Create a new record</a>
     </p>
 
     <table>

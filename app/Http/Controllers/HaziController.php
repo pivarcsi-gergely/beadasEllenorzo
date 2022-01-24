@@ -19,6 +19,11 @@ class HaziController extends Controller
         return view('homework.index', ['hazik' => $hazik]);
     }
 
+    public function create()
+    {
+        return view('homework.create');
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -27,6 +32,11 @@ class HaziController extends Controller
      */
     public function store(Request $request)
     {
+        $adatok = $request->only(['diak_nev', 'feladat', 'url']);
+        $hw = new Hazi();
+        $hw->fill($adatok);
+        $hw->save();
+        return redirect()->route('homework.index');
     }
 
     /**

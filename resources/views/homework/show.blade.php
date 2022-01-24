@@ -13,6 +13,8 @@
     <p>
         feladat URL-je: <a href="{{ $homework->url}}">{{ $homework->url }}</a>
     </p>
+    <p>
+    <p><a href="{{ route('homework.index') }}">Link back to the list</a></p>
 </body>
 
 </html>

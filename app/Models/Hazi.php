@@ -9,6 +9,8 @@ class Hazi extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['diak_nev', 'feladat', 'url'];
+
     protected $hidden = [
         'id'
     ];
