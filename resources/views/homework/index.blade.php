@@ -22,6 +22,7 @@
                 <th>Feladat</th>
                 <th>URL</th>
                 <th>Beadva</th>
+                <th>Művelet(ek)</th>
             </tr>
         </thead>
         <tbody>
@@ -31,6 +32,13 @@
                 <td>{{ $hazi->feladat }}</td>
                 <td><a href="{{ $hazi->url }}" target="_blank">{{ $hazi->url }}</a></td>
                 <td>{{ $hazi->updated_at }}</td>
+                <td>
+                    <form method="POST" action="{{ route('homework.destroy', $hazi) }}">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit">Törlés</button>
+                    </form>
+                </td>
             </tr>
             @endforeach
         </tbody>
