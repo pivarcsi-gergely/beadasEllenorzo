@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\HaziRequest;
 use App\Models\Hazi;
 use Illuminate\Support\Facades\DB;
 
@@ -27,12 +27,12 @@ class HaziController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\HaziRequest  $hRequest
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(HaziRequest $hRequest)
     {
-        $adatok = $request->only(['diak_nev', 'feladat', 'url']);
+        $adatok = $hRequest->only(['diak_nev', 'feladat', 'url']);
         $hw = new Hazi();
         $hw->fill($adatok);
         $hw->save();
@@ -50,16 +50,24 @@ class HaziController extends Controller
         return view('homework.show', ['homework' => $homework]);
     }
 
+    public function edit(Hazi $homework)
+    {
+        return view('homework.edit', ['homework' => $homework]);
+    }
+
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\HaziRequest  $hRequest
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(HaziRequest $hRequest, Hazi $homework)
     {
-        //
+        $adatok = $hRequest->only(['diak_nev', 'feladat', 'url']);
+        $homework->fill($adatok);
+        $homework->save();
+        return redirect()->route('homework.show', $homework->id);
     }
 
     /**
